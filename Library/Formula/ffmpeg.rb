@@ -39,6 +39,7 @@ class Ffmpeg < Formula
             "--enable-version3",
             "--enable-nonfree",
             "--enable-hardcoded-tables",
+	          "--enable-libaacplus",
             "--cc=#{ENV.cc}"]
 
     args << "--enable-libx264" if Formula.factory('x264').installed?
