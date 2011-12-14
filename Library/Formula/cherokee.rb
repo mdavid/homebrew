@@ -36,7 +36,8 @@ class Cherokee < Formula
                           "--sysconfdir=#{etc}",
                           "--localstatedir=#{var}/cherokee",
                           "--with-wwwuser=#{ENV['USER']}",
-                          "--with-wwwgroup=www"
+                          "--with-wwwgroup=www",
+			  "--with-wwwroot=#{ENV['HOME']}/Library/WebServer"
     system "make install"
 
     prefix.install "org.cherokee.webserver.plist"
