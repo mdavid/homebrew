@@ -1,14 +1,15 @@
 require 'formula'
 
 class Node < Formula
-  url 'http://nodejs.org/dist/v0.6.9/node-v0.6.9.tar.gz'
-  md5 'c2d2aee123a141ba8431855f1d9c8200'
   homepage 'http://nodejs.org/'
+  url 'http://nodejs.org/dist/v0.6.14/node-v0.6.14.tar.gz'
+  md5 '3033a866e230cca64e212ee8f2af27dd'
+
   head 'https://github.com/joyent/node.git'
 
   devel do
-    url 'http://nodejs.org/dist/v0.7.1/node-v0.7.1.tar.gz'
-    md5 '9a30d1273505627c649a2a29c5aaee6a'
+    url 'http://nodejs.org/dist/v0.7.6/node-v0.7.6.tar.gz'
+    md5 '09f336ce0247bb316550cfe21ff92dd6'
   end
 
   # Leopard OpenSSL is not new enough, so use our keg-only one
@@ -20,7 +21,7 @@ class Node < Formula
   skip_clean :all
 
   def options
-    [["--debug", "Build with debugger hooks."]]
+    [["--enable-debug", "Build with debugger hooks."]]
   end
 
   def install
@@ -33,7 +34,7 @@ class Node < Formula
 
     # Why skip npm install? Read https://github.com/mxcl/homebrew/pull/8784.
     args = ["--prefix=#{prefix}", "--without-npm"]
-    args << "--debug" if ARGV.include? '--debug'
+    args << "--debug" if ARGV.include? '--enable-debug'
 
     system "./configure", *args
     system "make install"
